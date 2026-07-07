@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #23211D;
+    --ink-soft: rgba(35,33,29,0.62);
+    --cream: #F7F2E9;
+    --rust: #C05B3F;
+    --sage: #6F7F5D;
+    --line: rgba(35,33,29,0.16);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1080px;
+    height: 1080px;
+    background: var(--cream);
+    font-family: "Noto Sans TC", sans-serif;
+    color: var(--ink);
+    overflow: hidden;
+  }
+  .frame {
+    position: absolute;
+    inset: 56px;
+    border: 1px solid var(--line);
+    padding: 56px 64px;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .eyebrow {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--rust);
+  }
+  .series {
+    font-size: 15px;
+    color: var(--ink-soft);
+    letter-spacing: 2px;
+  }
+  .title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 22px;
+  }
+  .title {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 900;
+    font-size: 52px;
+    line-height: 1.3;
+  }
+  .title-row .illustration {
+    flex: 0 0 auto;
+  }
+  .title-row .illustration svg {
+    width: 140px;
+    height: auto;
+    display: block;
+  }
+  .subtitle {
+    font-size: 20px;
+    color: var(--ink-soft);
+    margin-top: 12px;
+  }
+  .rule {
+    width: 64px;
+    height: 3px;
+    background: var(--rust);
+    margin: 30px 0;
+  }
+  .points {
+    list-style: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .points li {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+  .points .index {
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid var(--rust);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--rust);
+  }
+  .points h2 {
+    font-size: 23px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .points p {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+    margin-top: 30px;
+  }
+  .brand {
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  .mark-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <header>
+      <div class="eyebrow">{{eyebrow}}</div>
+      <div class="series">{{series}}</div>
+    </header>
+    <div class="title-row">
+      <h1 class="title">{{title}}</h1>
+      {{#illustration}}<div class="illustration">{{{illustration}}}</div>{{/illustration}}
+    </div>
+    {{#subtitle}}<div class="subtitle">{{subtitle}}</div>{{/subtitle}}
+    <div class="rule"></div>
+    <ol class="points">
+      {{#points}}
+      <li>
+        <span class="index">{{index}}</span>
+        <div class="text">
+          <h2>{{heading}}</h2>
+          <p>{{body}}</p>
+        </div>
+      </li>
+      {{/points}}
+    </ol>
+    <footer>
+      <span class="brand">{{brand}}</span>
+      <span class="mark-dot"></span>
+    </footer>
+  </div>
+</body>
+</html>
